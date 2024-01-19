@@ -10,4 +10,10 @@ function getComputerChoice(){
     }
 }
 
+const getPlayerChoice = () => {
+    let playerChoice = prompt("ROCK | PAPER | SCISSORS").toUpperCase();
+    return playerChoice;
+};
+
 console.log(getComputerChoice());
+console.log(getPlayerChoice());
