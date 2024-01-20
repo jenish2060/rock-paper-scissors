@@ -13,10 +13,10 @@ function getComputerChoice() {
   }
 }
 
-const getPlayerChoice = () => {
-  let playerChoice = prompt("ROCK | PAPER | SCISSORS");
-  return playerChoice;
-};
+// const getPlayerChoice = () => {
+//   let playerChoice = prompt("ROCK | PAPER | SCISSORS");
+//   return playerChoice;
+// };
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = capitalizeFirstLetter(playerSelection);

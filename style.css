@@ -1,0 +1,36 @@
+body {
+  background-color: #252A34;
+  color: white;
+  font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+    font-size: 54px;
+}
+
+.score {
+    display: flex;
+    gap: 100px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+button {
+    width: 200px;
+    height: 200px;
+    margin: 20px 50px;
+    font-size: 80px;
+    border-radius: 50%;
+    border-style: none;
+}
+
+h3{
+    font-size: 18px;
+    text-align: center;
+}
