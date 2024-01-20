@@ -20,7 +20,6 @@ const getPlayerChoice = () => {
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = capitalizeFirstLetter(playerSelection);
-  computerSelection = capitalizeFirstLetter(computerSelection);
   if (playerSelection === computerSelection) {
     return `It's a Tie! ${playerSelection} ties with ${computerSelection}`;
   } else if (
