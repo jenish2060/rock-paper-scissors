@@ -5,26 +5,28 @@ function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
     case 0:
-      return "ROCK";
+      return `Rock`;
     case 1:
-      return "PAPER";
+      return `Paper`;
     case 2:
-      return "SCISSORS";
+      return `Scissors`;
   }
 }
 
 const getPlayerChoice = () => {
-  let playerChoice = prompt("ROCK | PAPER | SCISSORS").toUpperCase();
+  let playerChoice = prompt("ROCK | PAPER | SCISSORS");
   return playerChoice;
 };
 
 function playRound(playerSelection, computerSelection) {
+  playerSelection = capitalizeFirstLetter(playerSelection);
+  computerSelection = capitalizeFirstLetter(computerSelection);
   if (playerSelection === computerSelection) {
     return `It's a Tie! ${playerSelection} ties with ${computerSelection}`;
   } else if (
-    (playerSelection === "ROCK" && computerSelection === "PAPER") ||
-    (playerSelection === "PAPER" && computerSelection === "SCISSORS") ||
-    (playerSelection === "SCISSORS" && computerSelection === "ROCK")
+    (playerSelection === "Rock" && computerSelection === "Paper") ||
+    (playerSelection === "Paper" && computerSelection === "Scissors") ||
+    (playerSelection === "Scissors" && computerSelection === "Rock")
   ) {
     computerScore += 1;
     return `You Lost! ${computerSelection} beats ${playerSelection}`;
@@ -32,6 +34,13 @@ function playRound(playerSelection, computerSelection) {
     playerScore += 1;
     return `You Won! ${playerSelection} beats ${computerSelection}`;
   }
+}
+
+function capitalizeFirstLetter(selection) {
+  selection = `${selection.charAt(0).toUpperCase()}${selection
+    .slice(1)
+    .toLowerCase()}`;
+  return selection;
 }
 
 function game() {
@@ -54,11 +63,11 @@ function game() {
   playerSelection = getPlayerChoice();
   computerSelection = getComputerChoice();
   console.log(playRound(playerSelection, computerSelection));
-  
+
   gameWinner();
 }
 
-function gameWinner(){
+function gameWinner() {
   if (playerScore > computerScore) {
     console.log("You Won!");
   } else if (computerScore > playerScore) {
