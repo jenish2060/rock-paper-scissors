@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
@@ -23,13 +26,42 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "PAPER" && computerSelection === "SCISSORS") ||
     (playerSelection === "SCISSORS" && computerSelection === "ROCK")
   ) {
+    computerScore += 1;
     return `You Lost! ${computerSelection} beats ${playerSelection}`;
   } else {
+    playerScore += 1;
     return `You Won! ${playerSelection} beats ${computerSelection}`;
   }
 }
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
+function game() {
+  let playerSelection = getPlayerChoice();
+  let computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
 
-console.log(playRound(playerSelection,computerSelection));
+  playerSelection = getPlayerChoice();
+  computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+
+  playerSelection = getPlayerChoice();
+  computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+
+  playerSelection = getPlayerChoice();
+  computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+
+  playerSelection = getPlayerChoice();
+  computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+  
+  if (playerScore > computerScore) {
+    console.log("You Won!");
+  } else if (computerScore > playerScore) {
+    console.log("You Lost!");
+  } else {
+    console.log("It's a Tie!");
+  }
+}
+
+game();
