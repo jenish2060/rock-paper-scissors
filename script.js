@@ -1,6 +1,12 @@
 let playerScore = 0;
 let computerScore = 0;
 
+const btn = document.querySelector("#rockButton");
+const playerText = document.createElement("h3");
+const computerText = document.createElement("h3");
+const roundResultText = document.createElement("h3");
+const roundResult = document.querySelector(".result");
+
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
@@ -13,25 +19,28 @@ function getComputerChoice() {
   }
 }
 
-// const getPlayerChoice = () => {
-//   let playerChoice = prompt("ROCK | PAPER | SCISSORS");
-//   return playerChoice;
-// };
+const getPlayerChoice = () => {
+  let playerChoice = "rock";
+  return playerChoice;
+};
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = capitalizeFirstLetter(playerSelection);
+  playerText.textContent = `You choose ${playerSelection}`;
+  computerText.textContent = `Computer choose ${computerSelection}`;
+
   if (playerSelection === computerSelection) {
-    return `It's a Tie! ${playerSelection} ties with ${computerSelection}`;
+    roundResultText.textContent = `It's a Tie! ${playerSelection} ties with ${computerSelection}`;
   } else if (
     (playerSelection === "Rock" && computerSelection === "Paper") ||
     (playerSelection === "Paper" && computerSelection === "Scissors") ||
     (playerSelection === "Scissors" && computerSelection === "Rock")
   ) {
     computerScore += 1;
-    return `You Lost! ${computerSelection} beats ${playerSelection}`;
+    roundResultText.textContent = `You Lost! ${computerSelection} beats ${playerSelection}`;
   } else {
     playerScore += 1;
-    return `You Won! ${playerSelection} beats ${computerSelection}`;
+    roundResultText.textContent = `You Won! ${playerSelection} beats ${computerSelection}`;
   }
 }
 
@@ -45,25 +54,15 @@ function capitalizeFirstLetter(selection) {
 function game() {
   let playerSelection = getPlayerChoice();
   let computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
+  playRound(playerSelection, computerSelection);
+  showRoundResult();
+}
 
-  playerSelection = getPlayerChoice();
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-
-  playerSelection = getPlayerChoice();
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-
-  playerSelection = getPlayerChoice();
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-
-  playerSelection = getPlayerChoice();
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-
-  gameWinner();
+function showRoundResult() {
+  playerText.classList.add("roundResultText");
+  computerText.classList.add("roundResultText");
+  roundResultText.classList.add("roundResultText");
+  roundResult.append(playerText, computerText, roundResultText);
 }
 
 function gameWinner() {

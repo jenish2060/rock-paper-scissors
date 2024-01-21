@@ -10,6 +10,7 @@ body {
 
 h1 {
     font-size: 54px;
+    margin-bottom: 20px;
 }
 
 .score {
@@ -30,7 +31,11 @@ button {
     border-style: none;
 }
 
-h3{
+.gameButtons {
+    margin-bottom: 20px;
+}
+
+.roundResultText{
     font-size: 18px;
     text-align: center;
 }
