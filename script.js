@@ -1,7 +1,11 @@
 let playerScore = 0;
 let computerScore = 0;
+let playerSelection;
+let buttonClicked = false;
 
-const btn = document.querySelector("#rockButton");
+const rockBtn = document.querySelector("#rockButton");
+const paperBtn = document.querySelector("#paperButton");
+const scissorsBtn = document.querySelector("#scissorsButton");
 const playerText = document.createElement("h3");
 const computerText = document.createElement("h3");
 const roundResultText = document.createElement("h3");
@@ -19,10 +23,13 @@ function getComputerChoice() {
   }
 }
 
-const getPlayerChoice = () => {
-  let playerChoice = "rock";
-  return playerChoice;
-};
+
+rockBtn.addEventListener('click', () => {
+    playerSelection = 'Rock';
+    buttonClicked = true;
+    game();
+});
+
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = capitalizeFirstLetter(playerSelection);
@@ -52,10 +59,10 @@ function capitalizeFirstLetter(selection) {
 }
 
 function game() {
-  let playerSelection = getPlayerChoice();
   let computerSelection = getComputerChoice();
   playRound(playerSelection, computerSelection);
   showRoundResult();
+  buttonClicked = false;
 }
 
 function showRoundResult() {
@@ -75,4 +82,3 @@ function gameWinner() {
   }
 }
 
-game();
