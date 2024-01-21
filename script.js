@@ -1,6 +1,8 @@
+const choiceArray = ['Rock', 'Paper', 'Scissors'];
+
 let playerScore = 0;
 let computerScore = 0;
-let playerSelection;
+
 let buttonClicked = false;
 
 const rockBtn = document.querySelector("#rockButton");
@@ -13,22 +15,8 @@ const roundResult = document.querySelector(".result");
 
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3);
-  switch (randomNumber) {
-    case 0:
-      return `Rock`;
-    case 1:
-      return `Paper`;
-    case 2:
-      return `Scissors`;
-  }
+  return choiceArray[randomNumber];
 }
-
-
-rockBtn.addEventListener('click', () => {
-    playerSelection = 'Rock';
-    buttonClicked = true;
-    game();
-});
 
 
 function playRound(playerSelection, computerSelection) {
