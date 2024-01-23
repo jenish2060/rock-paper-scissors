@@ -10,6 +10,7 @@ body {
 
 h1 {
     font-size: 54px;
+    margin-bottom: 20px;
 }
 
 .score {
@@ -30,7 +31,30 @@ button {
     border-style: none;
 }
 
-h3{
+.gameButtons {
+    margin-bottom: 20px;
+}
+
+.roundResultText{
     font-size: 18px;
     text-align: center;
+}
+
+.gameWinner {
+    font-size: 34px;
+    text-align: center;
+    margin: 20px;
+}
+
+.playAgain{
+    display: block;
+    margin: 0px auto; 
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    padding: 20px;
+    color: #D24545;
 }
