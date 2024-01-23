@@ -102,6 +102,12 @@ function showGameWinner() {
   roundResult.append(gameWinner, playAgain);
 }
 
+function removeGameWinner(){
+  while (roundResult.firstChild) {
+    roundResult.removeChild(roundResult.firstChild);
+  }
+}
+
 function restart() {
   playerScore = 0;
   computerScore = 0;
