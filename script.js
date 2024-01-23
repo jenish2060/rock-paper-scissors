@@ -1,26 +1,40 @@
-const choiceArray = ['Rock', 'Paper', 'Scissors'];
+const choiceArray = ["Rock", "Paper", "Scissors"];
 
 let playerScore = 0;
 let computerScore = 0;
 
-let buttonClicked = false;
-
 const rockBtn = document.querySelector("#rockButton");
 const paperBtn = document.querySelector("#paperButton");
 const scissorsBtn = document.querySelector("#scissorsButton");
+
+const player = document.querySelector(".playerScore");
+const computer = document.querySelector(".computerScore");
+
+const roundResult = document.querySelector(".result");
 const playerText = document.createElement("h3");
 const computerText = document.createElement("h3");
 const roundResultText = document.createElement("h3");
-const roundResult = document.querySelector(".result");
+
+const gameWinner = document.createElement("h3");
+const playAgain = document.createElement("button");
+
+rockBtn.addEventListener("click", () => handleClick("Rock"));
+paperBtn.addEventListener("click", () => handleClick("Paper"));
+scissorsBtn.addEventListener("click", () => handleClick("Scissors"));
 
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3);
   return choiceArray[randomNumber];
 }
 
+function handleClick(playerSelection) {
+  let computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
+  showRoundResult();
+  updateScore();
+}
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = capitalizeFirstLetter(playerSelection);
   playerText.textContent = `You choose ${playerSelection}`;
   computerText.textContent = `Computer choose ${computerSelection}`;
 
@@ -39,18 +53,9 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function capitalizeFirstLetter(selection) {
-  selection = `${selection.charAt(0).toUpperCase()}${selection
-    .slice(1)
-    .toLowerCase()}`;
-  return selection;
-}
-
-function game() {
-  let computerSelection = getComputerChoice();
-  playRound(playerSelection, computerSelection);
-  showRoundResult();
-  buttonClicked = false;
+function updateScore() {
+  player.textContent = playerScore;
+  computer.textContent = computerScore;
 }
 
 function showRoundResult() {
@@ -60,13 +65,12 @@ function showRoundResult() {
   roundResult.append(playerText, computerText, roundResultText);
 }
 
-function gameWinner() {
+function gameWinnerResult() {
   if (playerScore > computerScore) {
-    console.log("You Won!");
+    gameWinner.textContent = "You Won";
   } else if (computerScore > playerScore) {
-    console.log("You Lost!");
+    gameWinner.textContent = "You Lost";
   } else {
-    console.log("It's a Tie!");
+    gameWinner.textContent = `It's a Tie`;
   }
 }
-
