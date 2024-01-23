@@ -28,11 +28,16 @@ function getComputerChoice() {
 }
 
 function handleClick(playerSelection) {
-  let computerSelection = getComputerChoice();
-  playRound(playerSelection, computerSelection);
-  showRoundResult();
-  updateScore();
-  game();
+  if (
+    (playerScore < 5 && computerScore < 5) &&
+    !(playerScore == 5 && computerScore == 5)
+  ) {
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    showRoundResult();
+    updateScore();
+    game();
+  }
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -95,12 +100,6 @@ function showGameWinner() {
   playAgain.textContent = `PLAY AGAIN`;
   playAgain.classList.add("playAgain");
   roundResult.append(gameWinner, playAgain);
-}
-
-function removeGameWinner() {
-  while (roundResult.firstChild) {
-    roundResult.removeChild(roundResult.firstChild);
-  }
 }
 
 function restart() {
