@@ -32,6 +32,7 @@ function handleClick(playerSelection) {
   playRound(playerSelection, computerSelection);
   showRoundResult();
   updateScore();
+  game();
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -65,6 +66,18 @@ function showRoundResult() {
   roundResult.append(playerText, computerText, roundResultText);
 }
 
+function removeRoundResult() {
+  while (roundResult.firstChild) {
+    roundResult.removeChild(roundResult.firstChild);
+  }
+}
+
+function game() {
+  if (playerScore === 5 || computerScore === 5) {
+    showGameWinner();
+  }
+}
+
 function gameWinnerResult() {
   if (playerScore > computerScore) {
     gameWinner.textContent = "You Won";
@@ -74,3 +87,27 @@ function gameWinnerResult() {
     gameWinner.textContent = `It's a Tie`;
   }
 }
+
+function showGameWinner() {
+  removeRoundResult();
+  gameWinnerResult();
+  gameWinner.classList.add("gameWinner");
+  playAgain.textContent = `PLAY AGAIN`;
+  playAgain.classList.add("playAgain");
+  roundResult.append(gameWinner, playAgain);
+}
+
+function removeGameWinner() {
+  while (roundResult.firstChild) {
+    roundResult.removeChild(roundResult.firstChild);
+  }
+}
+
+function restart() {
+  playerScore = 0;
+  computerScore = 0;
+  updateScore();
+  removeGameWinner();
+}
+
+playAgain.addEventListener("click", restart);
